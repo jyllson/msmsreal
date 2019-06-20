@@ -1,5 +1,4 @@
 <?php
 
-include('db.inc.php');
-
-echo "Sve ok!";
+include_once('db.inc.php');
+include_once('functions.php');
