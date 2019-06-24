@@ -23,3 +23,46 @@ function getNaplate(){
 	}
 	return $naplata;
 }
+
+function getNaplateAll(){
+	$conn = getDBObracun();
+	$q = "SELECT * FROM naplata";
+	$res = mysqli_query($conn, $q);
+
+	while($row = mysqli_fetch_object($res)){
+		$naplata[] = $row;
+	}
+	return $naplata;
+}
+
+function getMeseci(){
+	$conn = getDBObracun();
+	$q = "SELECT * FROM meseci";
+	$res = mysqli_query($conn, $q);
+
+	while($row = mysqli_fetch_object($res)){
+		$meseci[] = $row;
+	}
+	return $meseci;
+}
+
+function getMesecFromId($mesec){
+	$conn = getDBObracun();
+	$q = "SELECT naziv FROM meseci where id='{$mesec}'";
+	$res = mysqli_query($conn, $q);
+
+	while($row = mysqli_fetch_object($res)){
+		$mesec_name = $row->naziv;
+	}
+	return $mesec_name;
+}
+
+function getPotrosnja($mesec, $userfield){
+	$conn = getDBAsterisk();
+	$q = "SELECT SUM(`billsec`)/60 AS potrosnja FROM `cdr` WHERE `calldate` LIKE '{$mesec}%' AND `userfield` = '{$userfield}'";
+	$res = mysqli_query($conn, $q);
+	while($row = mysqli_fetch_object($res)){
+		$potrosnja = $row;
+	}
+	return $potrosnja;
+}

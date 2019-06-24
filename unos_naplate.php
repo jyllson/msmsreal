@@ -5,6 +5,7 @@ include_once('functions.php');
 
 $naplate = getNaplate();
 
+
 ?>
 
 <!DOCTYPE html>
