@@ -17,7 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/telekom', 'HomeController@telekom');
-Route::post('/telekom', 'HomeController@telekomStore');
-Route::get('/vip', 'HomeController@vip');
+Route::middleware(['auth'])->group(function(){
+
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/telekom', 'HomeController@telekom');
+	Route::post('/telekom', 'HomeController@telekomStore');
+	Route::get('/vip', 'HomeController@vip');
+	Route::post('/vip', 'HomeController@vipStore');
+
+});
+
+

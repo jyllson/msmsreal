@@ -20,6 +20,15 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script type="text/javascript">
+        window.onload = function() {
+            if(document.getElementById("focused")){
+                document.getElementById("focused").focus();
+            }
+        };
+    </script>
+    
 </head>
 <body>
     <div id="app">
@@ -36,13 +45,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto nav-pills">                     
                         <li class="nav-item">
-                            <a class="nav-link active" href="home">Obračun</a>
+                            <a class="nav-link {{ (\Request::is('/home')) ? 'active' : '' }}" href="home">Obračun</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/telekom">Unos Telekom</a>
+                            <a class="nav-link {{ (\Request::is('/telekom')) ? 'active' : '' }}" href="/telekom">Unos Telekom</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/vip">Unos VIP</a>
+                            <a class="nav-link {{ (\Request::is('/vip')) ? 'active' : '' }}" href="/vip">Unos VIP</a>
                         </li>
                     </ul>
 

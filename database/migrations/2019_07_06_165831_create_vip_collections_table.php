@@ -16,12 +16,12 @@ class CreateVipCollectionsTable extends Migration
         Schema::create('vip_collections', function (Blueprint $table) {
             $table->increments('id');
             $table->smallInteger('month_id')->unsigned();
-            $table->float('vip_lok_pop_sum')->nulled();
-            $table->float('vip_lok_prp_sum')->nulled();
-            $table->float('vip_lok_db')->nulled();
-            $table->float('vip_lipb_pop_sum')->nulled();
-            $table->float('vip_lipb_prp_sum')->nulled();
-            $table->float('vip_lipb_baza')->nulled();
+            $table->float('vip_lok_pop_sum')->nullable();
+            $table->float('vip_lok_prp_sum')->nullable();
+            $table->float('vip_lok_db')->nullable();
+            $table->float('vip_lipb_pop_sum')->nullable();
+            $table->float('vip_lipb_prp_sum')->nullable();
+            $table->float('vip_lipb_db')->nullable();
             $table->timestamps();
             $table->foreign('month_id')->references('id')->on('months');
         });
